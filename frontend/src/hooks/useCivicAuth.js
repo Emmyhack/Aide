@@ -13,15 +13,14 @@ const useCivicAuth = () => {
   useEffect(() => {
     const initializeCivicAuth = async () => {
       try {
-        // TODO: Replace with actual Civic Auth initialization
-        // const civic = new CivicAuth({
-        //   clientId: import.meta.env.VITE_CIVIC_AUTH_CLIENT_ID,
-        //   redirectUri: `${window.location.origin}/auth/callback`,
-        //   scope: 'email profile'
-        // });
+        const CIVIC_CLIENT_ID = import.meta.env.VITE_CIVIC_AUTH_CLIENT_ID || 'f2fc33e0-3b6b-4ea7-bb5e-a5f60b45e808';
+        const REDIRECT_URI = import.meta.env.VITE_CIVIC_AUTH_REDIRECT_URI || '/auth/callback';
+        // TODO: Replace with actual Civic Auth initialization using @civic/auth
+        // Example (pseudo):
+        // const civic = await CivicAuth.init({ clientId: CIVIC_CLIENT_ID, redirectUri: `${window.location.origin}${REDIRECT_URI}`, scope: 'email profile' });
         
         // For now, we'll simulate initialization
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        await new Promise(resolve => setTimeout(resolve, 500));
         setIsInitialized(true);
       } catch (err) {
         console.error('Failed to initialize Civic Auth:', err);

@@ -23,16 +23,15 @@
       "dest": "backend/server.js"
     },
     {
+      "src": "/sitemap\\.xml",
+      "dest": "backend/server.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "frontend/dist/index.html"
     }
   ],
   "env": {
     "NODE_ENV": "production"
-  },
-  "functions": {
-    "backend/server.js": {
-      "maxDuration": 30
-    }
   }
 }

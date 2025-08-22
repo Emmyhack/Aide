@@ -11,15 +11,17 @@ const verifyCivicAuth = async (req, res, next) => {
       return res.status(401).json({ message: 'No authentication token provided' });
     }
     
-    // TODO: Implement actual Civic Auth verification
-    // For now, we'll simulate a successful verification
-    // In production, this would verify the token with Civic Auth
+    const civicClientId = process.env.CIVIC_AUTH_CLIENT_ID || 'f2fc33e0-3b6b-4ea7-bb5e-a5f60b45e808';
+    // TODO: Implement actual Civic Auth verification using civicClientId if SDK/endpoint available
+    // For now, simulate a verified token and extract minimal user info
+    const simulatedEmail = req.headers['x-demo-email'] || 'user@example.com';
+    const simulatedName = req.headers['x-demo-name'] || 'Test User';
     
     // Simulated user data from Civic Auth
     const civicUserData = {
-      id: 'civic_' + Date.now(), // This would come from Civic Auth
-      email: 'user@example.com', // This would come from Civic Auth
-      name: 'Test User', // This would come from Civic Auth
+      id: token.startsWith('civic_') ? token : 'civic_' + Buffer.from(token).toString('hex').slice(0, 16),
+      email: simulatedEmail,
+      name: simulatedName,
       profilePicture: null
     };
     
@@ -84,8 +86,6 @@ router.post('/login', verifyCivicAuth, async (req, res) => {
 
 // POST /api/auth/logout - Handle logout
 router.post('/logout', (req, res) => {
-  // In a stateless JWT system, logout is handled client-side
-  // Here we could add token blacklisting if needed
   res.json({ message: 'Logout successful' });
 });
 
