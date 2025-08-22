@@ -220,35 +220,36 @@ const LoginPage = () => {
             </form>
           )}
 
-          {/* Demo Login Section - Remove in production */}
-          <div className="mt-8 pt-6 border-t border-gray-200">
-            <p className="text-xs text-gray-500 text-center mb-4">
-              Demo Login (Development Only)
-            </p>
-            <div className="grid grid-cols-3 gap-2">
-              <button
-                onClick={() => handleDemoLogin('volunteer')}
-                disabled={isLoading}
-                className="btn-secondary text-xs py-2 px-3 disabled:opacity-50"
-              >
-                Volunteer
-              </button>
-              <button
-                onClick={() => handleDemoLogin('organizer')}
-                disabled={isLoading}
-                className="btn-secondary text-xs py-2 px-3 disabled:opacity-50"
-              >
-                Organizer
-              </button>
-              <button
-                onClick={() => handleDemoLogin('partner')}
-                disabled={isLoading}
-                className="btn-secondary text-xs py-2 px-3 disabled:opacity-50"
-              >
-                Partner
-              </button>
+          {import.meta.env.DEV && (
+            <div className="mt-8 pt-6 border-t border-gray-200">
+              <p className="text-xs text-gray-500 text-center mb-4">
+                Demo Login (Development Only)
+              </p>
+              <div className="grid grid-cols-3 gap-2">
+                <button
+                  onClick={() => handleDemoLogin('volunteer')}
+                  disabled={isLoading}
+                  className="btn-secondary text-xs py-2 px-3 disabled:opacity-50"
+                >
+                  Volunteer
+                </button>
+                <button
+                  onClick={() => handleDemoLogin('organizer')}
+                  disabled={isLoading}
+                  className="btn-secondary text-xs py-2 px-3 disabled:opacity-50"
+                >
+                  Organizer
+                </button>
+                <button
+                  onClick={() => handleDemoLogin('partner')}
+                  disabled={isLoading}
+                  className="btn-secondary text-xs py-2 px-3 disabled:opacity-50"
+                >
+                  Partner
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Security notice */}
           <div className="mt-6 pt-4 border-t border-gray-200">
